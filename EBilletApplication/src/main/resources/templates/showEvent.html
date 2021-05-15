@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="utf-8">
+<title th:text="${event.name}">Events</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<div  style=" background-size: cover;background-image:  url('https://lh3.googleusercontent.com/proxy/rhGso9ajL0HrEZRG8icLFZSQiloco0RCS4L1M4IB0zvgqV9E2yOU1f3K7pCR2BFJUD8UNbNDskSZcJFi1oJLyDRfsMrcAxiaC1bXWVV_TNTwZ-28nRni6QdcAUpLHFVjZJCjRjNKxQ');">
+<div  align="center">
+
+
+    
+
+<th:block th:include="/menu"/>
+
+
+	<div align="center" >
+		<div class="col-md-12">
+			<h2 >Detaile de L'evenement </h2>
+				                    
+			<div class="card " th:if="${event}">
+
+				<div class="card-header bg-primary text-white">
+					Detail de l'evenement : <label th:text="${event.name}"></label>
+				</div>
+				
+				<div class="card-body">
+				
+					
+
+					<div>
+						<label>Evenement  : </label> <label th:text="${event.name}"></label>
+					</div>
+						<div>
+						<label>Type : </label> <label th:text="${event.type}"></label>
+					</div>
+					
+					<div>
+						<label>Date : </label> <label th:text="${event.date}"></label>
+					</div>
+					
+					<div>
+						<label>Lieu : </label> <label th:text="${event.localisation}"></label>
+					</div>
+
+				
+					<div>
+						<label>Description : </label> <label th:text="${event.details}"></label>
+					</div>
+					<div>
+						<label>Prix  : </label> <label th:text="${event.details}"></label>
+					</div>
+					
+                     <a th:href="@{'/reserve/' + ${event.id_event}}" class="btn btn-primary">Reserve</a>
+					
+
+				</div>
+				
+				
+			</div>
+		
+			
+		</div>
+		
+	
+
+</body>
+</html>

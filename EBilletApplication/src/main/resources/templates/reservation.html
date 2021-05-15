@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>reservation</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center">
+<th:block th:include="/menu"/>  
+
+<h2></h2>
+<div class="col-md-6">
+<div class="card ">
+<div class="card-header bg-primary text-white">Make your reservation </div>
+<div class="card-body">
+<form th:action="@{/saveRervation}" th:object="${reservation}" method="post" action="#">
+    Civilite: <input type="text" name="civilite" th:field="*{civilite}" required /><br><br>
+    Nom: <input type="text" name="nom" th:field="*{nom}" required /><br><br>
+    Prenom: <input type="text" name="prenom" th:field="*{prenom}" required /><br><br>
+    Age: <input type="text" name="age" th:field="*{age}" required /><br><br>
+    <input class="btn btn-primary" type="submit" value="Je confirme la Reservation"><br><br>
+    
+</form>
+</div>
+ </div>
+ </div>
+</div>
+<div align="center"> <th:block th:include="/footer"/></div> 
+</body>
+</html>

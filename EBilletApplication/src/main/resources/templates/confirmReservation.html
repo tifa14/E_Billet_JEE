@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>reservation</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center">
+<th:block th:include="/menu"/>  
+
+<h2></h2>
+<div class="col-md-6">
+<div class="card ">
+<div class="card-header bg-info text-white">Entrez les informations de la carte </div>
+<div class="card-body">
+<form th:action="@{/payer}"  method="post" action="#">
+    Titulaire de la carte: <input type="text" name="civilite"  required /><br><br>
+    Numero de la carte : <input type="text" name="nom"  required /><br><br>
+    Date d'expiration: <input type="text" name="prenom"  required /><br><br>
+    Cryptogramme visuel: <input type="text" name="age"  required /><br><br>
+    <input class="btn btn-info" type="submit" value="Payer"><br><br>
+    
+</form>
+</div>
+ </div>
+ </div>
+</div>
+<div align="center"> <th:block th:include="/footer"/></div> 
+</body>
+</html>

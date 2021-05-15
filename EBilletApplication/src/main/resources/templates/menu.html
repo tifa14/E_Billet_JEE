@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>E-Billet</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+</head>
+<body>
+
+<header>		
+		<nav class="navbar navbar-expand-md navbar bg-dark">
+		
+<img sec:authorize="hasAnyAuthority('USER')" src="https://www.trimurti.fr/images-trimurti/theme/evenement.png" height="60" width="80"/>
+     <img sec:authorize="hasAnyAuthority('ADMIN')" src="https://previews.123rf.com/images/ionutparvu/ionutparvu1612/ionutparvu161201855/67603113-administration-stamp-sign-text-word-logo-blue-.jpg" height="60" width="80"/>
+
+		&nbsp; &nbsp;
+		 <a th:href="@{/}">Home</a>
+ 
+     &nbsp; &nbsp;
+  
+   <a th:href="@{/login}">Login</a>
+  
+     &nbsp; &nbsp;
+     
+      
+      <a  th:href="@{/register}">Register</a>
+  
+  
+     &nbsp; &nbsp;
+     
+     <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/admin}">Admin </a>
+   &nbsp; &nbsp;
+       
+      <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+      
+     
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+  
+   <div class="fixed-right">
+   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+		        <ul class="navbar-nav mr-auto">
+		            <li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"><i class="fas fa-search"></i> Rechercher par </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/searchbyString}">Name</a>
+							<a class="dropdown-item" th:href="@{/searchbyString}">Type</a> <a
+								class="dropdown-item" th:href="@{/searchbyString}">Localisation</a>
+								 <a class="dropdown-item" th:href="@{/searchbydate}">Date</a>
+						</div></li>
+
+					
+		        </ul>
+		    </div>
+		   </div>
+		</nav>
+		
+	</header>
+
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+</html>

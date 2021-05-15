@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+ <th:block th:include="/menu"></th:block>
+    <div class="container text-center">
+     
+        <h3>You have signed up successfully!</h3>
+        <p><a th:href="@{/login}">Click here to Login</a></p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        
+    </div>
+     <th:block th:include="/footer" ></th:block> 
+</body>
+</html>

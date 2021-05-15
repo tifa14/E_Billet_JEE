@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8"/>
+<title>Events</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div  style=" background-size: cover;background-image:  url('https://lh3.googleusercontent.com/proxy/rhGso9ajL0HrEZRG8icLFZSQiloco0RCS4L1M4IB0zvgqV9E2yOU1f3K7pCR2BFJUD8UNbNDskSZcJFi1oJLyDRfsMrcAxiaC1bXWVV_TNTwZ-28nRni6QdcAUpLHFVjZJCjRjNKxQ');">
+</div><div  align="center">
+
+
+    
+
+<th:block th:include="/menu"/>
+
+ <div sec:authorize="isAuthenticated()">
+			Welcome <b><span sec:authentication="name">Username</span></b> &nbsp;
+			<i><span sec:authentication="principal.authorities">Role</span></i>
+		</div>
+		
+
+   <h1>Liste des évènements </h1>
+    <a href="/new">Create New Event</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Name</th>
+                <th>Localisation</th>
+                <th>date</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr th:each="e : ${list}">
+                <td th:text="${e.id_event}">Event ID</td>
+                <td th:text="${e.name}">Name</td>
+                <td th:text="${e.localisation}">Localisation</td>
+                <td th:text="${e.date}">date</td>
+                <td th:text="${e.details}">Price</td>
+                <td>
+                   <a th:href="@{'/edit/' + ${e.id_event}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${e.id_event}}">Delete</a>
+                    
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

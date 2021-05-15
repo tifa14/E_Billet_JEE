@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8"/>
+<title>Events</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<div align="center">
+<th:block th:include="/menu"/>
+ <h3>Welcome <span sec:authentication="name">Username</span>
+ 
+ </h3>
+
+
+<div sec:authorize="hasAnyAuthority('ADMIN')">
+    <a href="/admin">Create New Product</a>
+</div>
+
+    <h1>Events List </h1>
+    
+    
+					<form th:action="@{/searchbydate}">
+
+						
+							From:  <input type="Date" id="date1" name="date1" size="20" th:value="${date1}" required/>
+							
+							To: <input type="Date" id="date2" name="date2" size="20" th:value="${date2}" required/>
+							
+							 &nbsp;
+   							 <input type="submit" value="Search" />
+   							 &nbsp;
+    						
+    						<input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+					</form>
+			
+						
+
+
+					
+				
+
+
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script> 
+    
+   
+    <br/><br/>
+    <table border="5" cellpadding="10">
+        <thead th:background-color="black" >
+            <tr >
+                <th>Event ID</th>
+                <th>Name</th>
+                <th>Localisation</th>
+                <th>date</th>
+                <th>type</th>
+                <th>details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr th:each="e : ${list}">
+                <td th:text="${e.id_event}">Event ID</td>
+                <td th:text="${e.name}">Name</td>
+                <td th:text="${e.localisation}">Localisation</td>
+                <td th:text="${e.date}">date</td>
+                <td th:text="${e.type}">type</td>
+                <td th:text="${e.details}">details</td>
+                <td>
+                   <a th:href="@{'/reserve/' + ${e.id_event}}">Reserve</a>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <br><br><br><br><br><br><br><br><br><br>
+    
+    <th:block th:include="/footer"></th:block>  
+</div>   
+</body>
+</html>
